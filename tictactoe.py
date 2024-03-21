@@ -51,5 +51,44 @@ def terminalTest(state):
 	else:
 		return False
 
-		
+# GETS THE SET OF ACTIONS POSSIBLE FOR THIS STATE
+def actions(state):
+	zeroCount = 0
+	oneCount = 0
+	nextPly = -1
+	possibleMoves = [];
+	for i in range(0, len(state)):
+		for j in range(0, len(state)):
+			if state[i][j] == 0:
+				zeroCount+=1
+			elif state[i][j] == 1:
+				oneCount+=1
+			else:
+				possibleMoves.append([i, j])
+	
+	# assuming 1 always plays first (without loss of generality)
+	if(zeroCount == oneCount):
+		# one's turn
+		nextPly = 1
+	else:
+		nextPly = 0
+
+	for move in possibleMoves:
+		move.append(nextPly)
+
+	return possibleMoves
+	
+# GETS THE RESULT OF PERFORMING AN ACTION ON A STATE
+def result(state, action):
+	# action is a list of three things: i, j, player(1 or 0)
+
+	state[action[0]][action[1]] = action[2]
+
+	return state
+
+
+
+				
+	
+
 
