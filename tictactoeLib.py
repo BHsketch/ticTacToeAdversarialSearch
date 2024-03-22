@@ -1,8 +1,5 @@
 # representing x's by 1's and o's by 0's
 
-board = [[-1, -1, -1], [-1, -1, -1], [-1, -1, -1]]
-
-
 # returns the utility of an end state w.r.t. the player playing 'x' i.e. '1'
 def utility(state):
 
@@ -79,7 +76,9 @@ def actions(state):
 	return possibleMoves
 	
 # GETS THE RESULT OF PERFORMING AN ACTION ON A STATE
-def result(state, action):
+def result(stateIn, action):
+	#print("inside result")
+	state = [ i for i in stateIn ]
 	# action is a list of three things: i, j, player(1 or 0)
 
 	state[action[0]][action[1]] = action[2]
